@@ -2,11 +2,10 @@ package attractions
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ListView
 import com.weather.R
 import kotlinx.android.synthetic.main.activity_attractions_screen.*
 
-class AttractionsScreen : AppCompatActivity() {
+class AttractionsScreen : AppCompatActivity(){
 
     var adapter: AttractionListViewAdapter? = null
 
@@ -21,7 +20,9 @@ class AttractionsScreen : AppCompatActivity() {
         place_list.setAnimationCacheEnabled(false)
         place_list.setScrollingCacheEnabled(false)
 
-
+        btnClose.setOnClickListener {
+            finish()
+        }
     }
 
 
@@ -40,4 +41,5 @@ class AttractionsScreen : AppCompatActivity() {
         data.add( PlaceItem("Музей естественных наук", resources.getString(R.string.lorem_ipsum), R.drawable.example_place) )
         return data
     }
+
 }

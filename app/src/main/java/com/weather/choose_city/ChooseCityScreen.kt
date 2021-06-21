@@ -20,6 +20,8 @@ class ChooseCityScreen : AppCompatActivity() {
             val intent = Intent(this, CityWeatherScreen::class.java)
             startActivity( intent )
         }
+
+
     }
 }
 

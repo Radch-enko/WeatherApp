@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import attractions.AttractionsScreen
 import com.weather.R
+import kotlinx.android.synthetic.main.activity_attractions_screen.*
 import kotlinx.android.synthetic.main.activity_city_weather_screen.*
+import kotlinx.android.synthetic.main.activity_city_weather_screen.btnClose
 
 
 class CityWeatherScreen : AppCompatActivity() {
@@ -27,6 +29,9 @@ class CityWeatherScreen : AppCompatActivity() {
         btnToAttractions.setOnClickListener {
             val intent = Intent(this, AttractionsScreen::class.java)
             startActivity( intent )
+        }
+
+        btnClose.setOnClickListener {
             finish()
         }
     }
