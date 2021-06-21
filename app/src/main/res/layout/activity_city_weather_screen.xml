@@ -8,7 +8,7 @@
     tools:context="weather_screen.CityWeatherScreen"
     android:background="@color/background">
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -20,6 +20,7 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitStart"
             app:srcCompat="@drawable/arrow" />
@@ -28,6 +29,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:fontFamily="@font/sfbold"
             android:gravity="center"
             android:text="@string/weather_in_city"
@@ -35,6 +37,70 @@
             android:textColor="@color/white"
             android:textSize="17sp" />
 
-    </RelativeLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/map" />
+
+    <TextView
+        android:id="@+id/tvCityName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Название города"
+        style="@style/title"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvTodayDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date_example"
+        android:layout_marginLeft="24dp"
+        android:textColor="@color/lightest_gray"
+        android:layout_marginTop="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/today_weather_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        />
+
+    <TextView
+        android:id="@+id/tvTomorrowDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date_example"
+        android:layout_marginLeft="24dp"
+        android:textColor="@color/lightest_gray"
+        android:layout_marginTop="8dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tomorrow_weather_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnToAttractions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/border_radius"
+        android:backgroundTint="@color/button"
+        android:fontFamily="@font/sfregular"
+        android:padding="8dp"
+        android:text="@string/attractions"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"/>
 
 </LinearLayout>

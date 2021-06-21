@@ -13,4 +13,5 @@
     <color name="light_gray">#F2F2F2</color>
     <color name="lightest_gray">#939393</color>
     <color name="border">#404040</color>
+    <color name="weather_plate">#424242</color>
 </resources>

@@ -5,4 +5,8 @@
     <string name="last_queries">Последние запросы</string>
     <string name="cancel">Отменить</string>
     <string name="weather_in_city">Погода в городе</string>
+    <string name="date_example">Сегодня, 26 янв 2020</string>
+    <string name="cloudy">Облачно</string>
+    <string name="sunny">Солнечно</string>
+    <string name="attractions">Достопримечательности</string>
 </resources>
