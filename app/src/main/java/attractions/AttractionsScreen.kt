@@ -1,20 +1,34 @@
-package attracitons
+package attractions
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ListView
 import com.weather.R
 import kotlinx.android.synthetic.main.activity_attractions_screen.*
-import weather_screen.WeatherListItem
-import weather_screen.WeatherStatus
 
 class AttractionsScreen : AppCompatActivity() {
+
+    var adapter: AttractionListViewAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attractions_screen)
 
-        place_list.adapter = AttractionListViewAdapter(this.layoutInflater, fillList() )
+        adapter = AttractionListViewAdapter(this , fillList() )
+        adapter?.notifyDataSetChanged()
+        place_list.adapter = adapter
+
+        place_list.setAnimationCacheEnabled(false)
+        place_list.setScrollingCacheEnabled(false)
+
+
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        adapter?.notifyDataSetChanged()
+    }
 
     private fun fillList(): List<PlaceItem> {
 
