@@ -1,15 +1,15 @@
 package weather_screen
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import attracitons.AttractionsScreen
 import com.weather.R
 import kotlinx.android.synthetic.main.activity_city_weather_screen.*
 
 
 class CityWeatherScreen : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +23,12 @@ class CityWeatherScreen : AppCompatActivity() {
         val layoutManagerTomorrow = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         tomorrow_weather_list.layoutManager = layoutManagerTomorrow
         tomorrow_weather_list.adapter = RecyclerViewAdapter(fillList())
+
+        btnToAttractions.setOnClickListener {
+            val intent = Intent(this, AttractionsScreen::class.java)
+            startActivity( intent )
+            finish()
+        }
     }
 
     private fun fillList(): List<WeatherListItem> {
