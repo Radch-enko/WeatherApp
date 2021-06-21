@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="title">
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">@font/sfbold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="search_view">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:queryHint">Search...</item>
+        <item name="android:searchIcon">@null</item>
+        <item name="android:searchHintIcon">@null</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>
