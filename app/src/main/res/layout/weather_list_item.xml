@@ -46,4 +46,16 @@
         android:textColor="@color/white"
         android:textSize="13sp"
         android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/tvWeatherValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="+25"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/sfregular"
+        android:gravity="center"/>
 </LinearLayout>

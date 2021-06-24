@@ -1,30 +1,61 @@
 package weather_screen
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import attractions.AttractionsScreen
 import com.weather.R
-import kotlinx.android.synthetic.main.activity_attractions_screen.*
+import common.Config
 import kotlinx.android.synthetic.main.activity_city_weather_screen.*
-import kotlinx.android.synthetic.main.activity_city_weather_screen.btnClose
+import weather_screen.other.RecyclerViewAdapter
+import weather_screen.other.WeatherListItem
+import java.util.*
 
 
 class CityWeatherScreen : AppCompatActivity() {
 
+    lateinit var cityWeatherViewModel: CityWeatherViewModel
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city_weather_screen)
 
-        val layoutManagerToday = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        cityWeatherViewModel = ViewModelProvider(this).get(CityWeatherViewModel::class.java)
 
+        val layoutManagerToday = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         today_weather_list.layoutManager = layoutManagerToday
-        today_weather_list.adapter = RecyclerViewAdapter(fillList())
 
         val layoutManagerTomorrow = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         tomorrow_weather_list.layoutManager = layoutManagerTomorrow
-        tomorrow_weather_list.adapter = RecyclerViewAdapter(fillList())
+
+        cityWeatherViewModel.hourlyWeather.observe(this, Observer {
+
+            val remoteList = cityWeatherViewModel.getHourlyWeatherOnToday()!!
+
+            val todayList = mutableListOf<WeatherListItem>()
+            val tomorrowList = mutableListOf<WeatherListItem>()
+
+            remoteList.forEach {
+                if ( it.isTodayWeatherItem != null ){
+                    if ( it.isTodayWeatherItem == true )
+                        todayList.add(it)
+                    else if ( it.isTodayWeatherItem == false )
+                        tomorrowList.add(it)
+                }
+            }
+
+            today_weather_list.adapter = RecyclerViewAdapter( todayList )
+            tomorrow_weather_list.adapter = RecyclerViewAdapter( tomorrowList )
+        })
+
 
         btnToAttractions.setOnClickListener {
             val intent = Intent(this, AttractionsScreen::class.java)
@@ -34,23 +65,18 @@ class CityWeatherScreen : AppCompatActivity() {
         btnClose.setOnClickListener {
             finish()
         }
+
+        Config.city.observe(this, Observer {
+            tvHeaderTitle.text = Config.city.value
+            tvCityName.text = Config.city.value
+        })
+
+        Config.zonedTime.observe(this, Observer {
+            tvTodayDate.text = "Сегодня, ${it?.format(Config.dtf_timed).toString()}"
+            tvTomorrowDate.text = "Завтра, ${it?.plusDays(1)?.format(Config.dtf_timed).toString()}"
+        })
+
     }
 
-    private fun fillList(): List<WeatherListItem> {
 
-        val data = mutableListOf<WeatherListItem>()
-        data.add(WeatherListItem("12:00", WeatherStatus.CLOUDY.status, R.drawable.cloudy))
-        data.add(WeatherListItem("13:00", WeatherStatus.CLOUDY.status, R.drawable.cloudy))
-        data.add(WeatherListItem("14:00", WeatherStatus.CLOUDY.status, R.drawable.cloudy))
-        data.add(WeatherListItem("15:00", WeatherStatus.STORM.status, R.drawable.storm))
-        data.add(WeatherListItem("16:00", WeatherStatus.STORM.status, R.drawable.storm))
-        data.add(WeatherListItem("16:00", WeatherStatus.STORM.status, R.drawable.storm))
-        data.add(WeatherListItem("17:00", WeatherStatus.SUNNY.status, R.drawable.sunny))
-        data.add(WeatherListItem("18:00", WeatherStatus.SUNNY.status, R.drawable.sunny))
-        data.add(WeatherListItem("19:00", WeatherStatus.SUNNY.status, R.drawable.sunny))
-        data.add(WeatherListItem("20:00", WeatherStatus.SUNNY.status, R.drawable.sunny))
-        data.add(WeatherListItem("21:00", WeatherStatus.SUNNY.status, R.drawable.sunny))
-
-        return data
-    }
 }

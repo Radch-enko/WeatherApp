@@ -10,6 +10,8 @@ class PlaceDetailScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_detail_screen)
 
+
+
         btnClose.setOnClickListener {
             finish()
         }

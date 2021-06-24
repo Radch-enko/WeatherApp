@@ -1,8 +1,7 @@
-package weather_screen
+package weather_screen.other
 
 enum class WeatherStatus(val status: String) {
     CLOUDY("Облачно"),
-    SUNNY("Солнечно"),
-    STORM("Гроза")
-
+    SUNNY("Ясно"),
+    STORM("Дождь")
 }

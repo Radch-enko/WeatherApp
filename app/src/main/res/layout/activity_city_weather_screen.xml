@@ -26,7 +26,7 @@
             app:srcCompat="@drawable/arrow" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
