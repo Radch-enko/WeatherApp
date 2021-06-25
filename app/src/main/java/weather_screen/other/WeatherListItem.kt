@@ -28,7 +28,7 @@ data class WeatherListItem(var time: String, var status: String, var icon: Int, 
          * 1 - получить время на моем компе
          * 2 - получить часовой пояс из api
          * 3 - изменить время на компе в соответствии с часовым поясом
-         * 4 - использовать изменное время в if - блоке для вывода weather item
+         * 4 - использовать измененное время в if - блоке для вывода weather item
          *
          * ***/
 
@@ -38,7 +38,7 @@ data class WeatherListItem(var time: String, var status: String, var icon: Int, 
          * 3 - у Омска с миром разница 6 часов
          * 4 - 10 - 6 = 4
          * 5 - У Омска с Владивостком разница 4 часа
-         * 6 Омск. время + 4 часа = Владивосток. время
+         * 6 - Омск. время + 4 часа = Владивосток. время
          */
         val diff = (Config.timeZone!!.value!!/60 - Math.abs(Calendar.getInstance().time.timezoneOffset) ) / 60
 

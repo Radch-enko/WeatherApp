@@ -1,5 +1,5 @@
 import com.google.gson.annotations.SerializedName
-import common.Coord
+import weather_screen.other.hourlyResponseClasses.Coord
 
 /*
 Copyright (c) 2021 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,12 +14,12 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 
 data class City (
-	@SerializedName("id") val id : Int,
-	@SerializedName("name") val name : String,
-	@SerializedName("coord") val coord : Coord,
-	@SerializedName("country") val country : String,
-	@SerializedName("population") val population : Int,
-	@SerializedName("timezone") val timezone : Int,
-	@SerializedName("sunrise") val sunrise : Int,
-	@SerializedName("sunset") val sunset : Int
+    @SerializedName("id") val id : Int,
+    @SerializedName("name") val name : String,
+    @SerializedName("coord") val coord : Coord,
+    @SerializedName("country") val country : String,
+    @SerializedName("population") val population : Int,
+    @SerializedName("timezone") val timezone : Int,
+    @SerializedName("sunrise") val sunrise : Int,
+    @SerializedName("sunset") val sunset : Int
 )

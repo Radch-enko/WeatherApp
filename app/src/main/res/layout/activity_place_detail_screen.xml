@@ -26,7 +26,7 @@
             app:srcCompat="@drawable/arrow" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -40,20 +40,30 @@
     </FrameLayout>
 
     <ScrollView
+        android:id="@+id/scroolView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/image"
+
+            <LinearLayout
+                android:id="@+id/wrapper_place_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@drawable/example_place" />
+                android:layout_height="200dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/place_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/example_place" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,14 +91,17 @@
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
-                <TextView
+                <ToggleButton
                     android:id="@+id/btnReadMore"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:background="@null"
                     android:fontFamily="@font/sfregular"
-                    android:text="@string/read_more"
+                    android:textAllCaps="false"
                     android:textColor="@color/button"
+                    android:textOff="@string/read_more"
+                    android:textOn="@string/turn"
                     android:textSize="16sp" />
 
                 <TextView
@@ -101,12 +114,12 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView3"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView2"
+                android:name="attractions.detail.DetailPlaceMapsFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@drawable/map" />
+                android:layout_height="200dp" />
+
 
         </LinearLayout>
     </ScrollView>

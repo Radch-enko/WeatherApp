@@ -3,11 +3,8 @@ package common
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
-import weather_screen.other.WeatherListItem
+import weather_screen.other.hourlyResponseClasses.Coord
 import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZoneOffset
-import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 

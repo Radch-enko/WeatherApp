@@ -12,4 +12,5 @@
     <string name="lorem_ipsum">Tempus at pharetra ipsum vel eleifend non vestibulum ac, tristique. Malesuada ac viverra blandit at vitae tellus sit tempus sem eu.</string>
     <string name="read_more">Читать дальше</string>
     <string name="on_map">На карте</string>
+    <string name="turn">Свернуть</string>
 </resources>

@@ -6,15 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import attractions.detail.PlaceDetailScreen
+import attractions.jsonProcessing.PlaceItem
+import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import com.weather.R
 
 
 class AttractionListViewAdapter (val context: Context , val attractions: List<PlaceItem>): BaseAdapter() {
 
     val mInflater: LayoutInflater = LayoutInflater.from(context)
+    val gson = Gson()
 
     override fun getCount(): Int {
         return attractions.size
@@ -35,13 +38,15 @@ class AttractionListViewAdapter (val context: Context , val attractions: List<Pl
         }
 
         val curPlace = attractions[position]
+        val jsonCurPlace = gson.toJson(curPlace)
 
-        view?.findViewById<TextView>(R.id.tvPlaceName)?.text = curPlace.title
-        view?.findViewById<TextView>(R.id.tvPlaceAbout)?.text = curPlace.about
-        view?.findViewById<ImageView>(R.id.background_image)?.setImageResource(curPlace.background)
+        view?.findViewById<TextView>(R.id.tvPlaceName)?.text = curPlace.name
+        view?.findViewById<TextView>(R.id.tvPlaceAbout)?.text = curPlace.desc
+        Picasso.get().load(curPlace.images).placeholder(R.drawable.no_image).into(view?.findViewById(R.id.background_image))
 
         view?.setOnClickListener {
             val intent = Intent(context, PlaceDetailScreen::class.java )
+            intent.putExtra("jsonCurPlace", jsonCurPlace)
             context.startActivity(intent)
         }
 

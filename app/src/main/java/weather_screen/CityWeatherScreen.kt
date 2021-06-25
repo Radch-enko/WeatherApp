@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import attractions.jsonProcessing.AttractionsJSONParser
 import attractions.AttractionsScreen
 import com.weather.R
 
@@ -57,6 +59,15 @@ class CityWeatherScreen : AppCompatActivity()  {
             tomorrow_weather_list.adapter = RecyclerViewAdapter( tomorrowList )
         })
 
+
+        // проверяю имеются ли для этого города достопримечательности
+        val attractionsJSONParser = AttractionsJSONParser(applicationContext)
+        val attractions = attractionsJSONParser.parse()
+        // прячу кнопку, если их нет
+        if (attractions.isEmpty())
+            btnToAttractions.visibility = View.GONE
+        else
+            btnToAttractions.visibility = View.VISIBLE
 
         btnToAttractions.setOnClickListener {
             val intent = Intent(this, AttractionsScreen::class.java)

@@ -1,4 +1,4 @@
-package weather_screen
+package weather_screen.openWeatherMapAPI
 
 
 import retrofit2.Call

@@ -10,10 +10,10 @@ import common.Config
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import weather_screen.openWeatherMapAPI.OpenWeatherLogic
+import weather_screen.openWeatherMapAPI.OpenWeatherMapAPI
 import weather_screen.other.WeatherListItem
 import weather_screen.other.hourlyResponseClasses.HourlyWeather
-import java.time.ZonedDateTime
-import java.util.*
 
 
 class CityWeatherViewModel: ViewModel() {
@@ -30,7 +30,7 @@ class CityWeatherViewModel: ViewModel() {
         getWeatherList(weatherLogic.openWeatherMapApi)
     }
 
-    private fun getWeatherList( owmApi: OpenWeatherMapAPI ){
+    private fun getWeatherList( owmApi: OpenWeatherMapAPI){
 
         val list = owmApi.getCityHourlyWeather(Config.city.value!!, "metric", "ru" , Config.api_key)
         list.enqueue(object : Callback<HourlyWeather>{

@@ -1,11 +1,11 @@
-package weather_screen
+package weather_screen.openWeatherMapAPI
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class OpenWeatherLogic {
 
-    lateinit var openWeatherMapApi:OpenWeatherMapAPI
+    lateinit var openWeatherMapApi: OpenWeatherMapAPI
 
     fun configureRetrofit(){
         val retrofit = Retrofit.Builder()

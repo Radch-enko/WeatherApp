@@ -25,7 +25,7 @@ class ChooseCityViewModel(application: Application): AndroidViewModel(applicatio
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val service = retrofit.create(CityListService::class.java)
+    val service = retrofit.create(CityListAPI::class.java)
     val call = service.getCities()
 
 
