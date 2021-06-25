@@ -1,32 +1,33 @@
 package weather_screen
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import attractions.AttractionsScreen
 import com.weather.R
+
 import common.Config
 import kotlinx.android.synthetic.main.activity_city_weather_screen.*
 import weather_screen.other.RecyclerViewAdapter
 import weather_screen.other.WeatherListItem
-import java.util.*
 
 
-class CityWeatherScreen : AppCompatActivity() {
+class CityWeatherScreen : AppCompatActivity()  {
 
     lateinit var cityWeatherViewModel: CityWeatherViewModel
 
+    @SuppressLint("ResourceType")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city_weather_screen)
+
 
         cityWeatherViewModel = ViewModelProvider(this).get(CityWeatherViewModel::class.java)
 
@@ -75,7 +76,6 @@ class CityWeatherScreen : AppCompatActivity() {
             tvTodayDate.text = "Сегодня, ${it?.format(Config.dtf_timed).toString()}"
             tvTomorrowDate.text = "Завтра, ${it?.plusDays(1)?.format(Config.dtf_timed).toString()}"
         })
-
     }
 
 

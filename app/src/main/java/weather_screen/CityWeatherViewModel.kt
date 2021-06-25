@@ -51,10 +51,8 @@ class CityWeatherViewModel: ViewModel() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getHourlyWeatherOnToday(): MutableList<WeatherListItem>? {
-
-        Log.e("TAG", "timezone = ${hourlyWeather.value?.city?.timezone}")
         Config.timeZone.value = hourlyWeather.value?.city?.timezone
-        Log.e("TAG", "Config.timezone = ${Config.timeZone}")
+        Config.coord.value = hourlyWeather.value?.city?.coord
 
         val list = mutableListOf<WeatherListItem>()
         hourlyWeather.value?.list?.forEach {

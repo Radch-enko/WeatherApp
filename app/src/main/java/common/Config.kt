@@ -14,7 +14,9 @@ import java.util.*
 class Config {
     companion object{
         var city = MutableLiveData<String>()
+        var coord = MutableLiveData<Coord>()
         var timeZone = MutableLiveData<Int>()
+
         const val api_key = "b565c95da58582be73fe68a8aa7331a7"
         var zonedTime = MutableLiveData<LocalDateTime>()
 
@@ -27,6 +29,6 @@ class Config {
         @RequiresApi(Build.VERSION_CODES.O)
         val dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         @RequiresApi(Build.VERSION_CODES.O)
-        val dtf_timed = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm:ss")
+        val dtf_timed = DateTimeFormatter.ofPattern("dd MMM yyyy")
     }
 }
